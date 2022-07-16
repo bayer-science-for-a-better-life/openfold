@@ -17,7 +17,10 @@ from operator import mul
 
 import torch
 
-attn_core_inplace_cuda = importlib.import_module("attn_core_inplace_cuda")
+try:
+    attn_core_inplace_cuda = importlib.import_module("attn_core_inplace_cuda")
+except ModuleNotFoundError:
+    attn_core_inplace_cuda = None
 
 
 SUPPORTED_DTYPES = [torch.float32, torch.bfloat16]
